@@ -5,18 +5,21 @@ set PORT=8000
 set VERSION=0.1.22
 
 echo Expect version %VERSION%
-echo:
-echo Before we begin, please ensure that:
-echo - A .jks keystore has been created and set the path, alias, and passwords in [1m[96mconfig.txt[0m[0m
-echo - WSL with Bash has been installed on your Windows machine, and:
-echo   - Node.js has been configured in it with [96mnvm install ^<your Node.js version^>[0m
-echo   - [1m[96mexpo-cli[0m[0m has been installed in it with [96mnpm install -g expo-cli[0m
-echo   - [1m[96mturtle-cli[0m[0m has been installed in it with [96mnpm install -g turtle-cli[0m
-echo   - For Android, you have set up turtle with Expo SDK with [96mturtle setup:android --sdk-version ^<your Expo SDK version^>[0m
-echo:
-echo Build will take approximately 15-20 minutes, so let's leave no room for errors.
-choice /c yn /N /M "Ready to roll? (y/n) "
-if errorlevel 2 goto :EOF
+
+if /i "%1" neq "silent" (
+    echo:
+    echo Before we begin, please ensure that:
+    echo - A .jks keystore has been created and set the path, alias, and passwords in [1m[96mconfig.txt[0m[0m
+    echo - WSL with Bash has been installed on your Windows machine, and:
+    echo   - Node.js has been configured in it with [96mnvm install ^<your Node.js version^>[0m
+    echo   - [1m[96mexpo-cli[0m[0m has been installed in it with [96mnpm install -g expo-cli[0m
+    echo   - [1m[96mturtle-cli[0m[0m has been installed in it with [96mnpm install -g turtle-cli[0m
+    echo   - For Android, you have set up turtle with Expo SDK with [96mturtle setup:android --sdk-version ^<your Expo SDK version^>[0m
+    echo:
+    echo Build will take approximately 15-20 minutes, so let's leave no room for errors.
+    choice /c yn /N /M "Ready to roll? (y/n) "
+    if errorlevel 2 goto :EOF
+)
 
 echo:
 echo [93m[1] Exporting your Expo app to [1mdist[0m[0m
