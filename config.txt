@@ -1,0 +1,20 @@
+# Configuration file for Expect version 0.1.22
+# DO NOT commit this file. Ensure that the .expect
+# folder is added to .gitignore!
+
+# DO NOT remove the quotation marks. Replace the value
+# in them accordingly.
+
+# The keystore file name in .expect folder. Ignore the
+# PATH in KEYSTORE_PATH--it means nothing. You should
+# store the keystore.jks file in .expect folder.
+KEYSTORE_PATH="my-keystore.jks"
+
+# The alias to your keystore
+KEYSTORE_ALIAS="my-keystore-alias"
+
+# The password to your keystore
+KEYSTORE_PASSWORD="my-keystore-password"
+
+# The password to your keystore key
+KEY_PASSWORD="my-key-password"
