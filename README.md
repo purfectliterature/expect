@@ -1,5 +1,6 @@
 # Expect
-Expect is a simple Windows script written in Batch for automating the build of Expo apps to APK for quick testing.
+Expect is a simple Windows script written in Batch for automating the build of Expo apps to APK **locally**, without 
+Expo's Turtle build servers, for quick testing.
 
 >Expect can easily be extended to support building into app bundles and iOS IPAs (by writing a Shell script). At this stage, 
 >Expect is still in early production stage and currently supports building to APK only.
