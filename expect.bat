@@ -1,3 +1,5 @@
+@ECHO OFF
+
 REM
 REM    Copyright 2020 Phillmont Muktar
 REM
@@ -12,8 +14,6 @@ REM    distributed under the License is distributed on an "AS IS" BASIS,
 REM    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 REM    See the License for the specific language governing permissions and
 REM    limitations under the License.
-
-@ECHO OFF
 
 set HOST=localhost
 set PORT=8000
