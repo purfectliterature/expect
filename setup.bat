@@ -21,5 +21,7 @@ if not exist ".gitignore" (
 )
 
 echo:
-echo [92mYou are all done! Copy your [1mkeystore.jks[0m [92mand enter the credentials[0m
-echo [92min [1mconfig.txt[0m [92mto finish setting Expect up. Enjoy![0m
+echo [92mYou are all done! Copy your [1mkeystore.jks[0m [92mto .expect and enter the credentials[0m
+echo [92min .expect\[1mconfig.txt[0m [92mto finish setting Expect up. Enjoy![0m
+
+(goto) 2>nul & del "%~f0"
