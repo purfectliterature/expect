@@ -58,7 +58,7 @@ export EXPO_ANDROID_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD;^
 export EXPO_ANDROID_KEY_PASSWORD=$KEY_PASSWORD;^
 export NODE_TLS_REJECT_UNAUTHORIZED=0;^
 cd ..;^
-turtle build:android --type apk --keystore-path $KEYSTORE_PATH --keystore-alias $KEYSTORE_ALIAS --public-url https://%HOST%:%PORT%/android-index.json
+turtle build:android --type apk --keystore-path .expect\$KEYSTORE_PATH --keystore-alias $KEYSTORE_ALIAS --public-url https://%HOST%:%PORT%/android-index.json
 
 echo:
 echo [93m[6] Cleaning up[0m
