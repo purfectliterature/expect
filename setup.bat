@@ -12,11 +12,11 @@ rename expect .expect
 echo:
 echo [93m[3] Checking if .expect has been ignored in .gitignore[0m
 if not exist ".gitignore" (
-    echo .expect > .gitignore
+    echo .expect >> .gitignore
 ) else (
     findstr /m ".expect" .gitignore
     if %errorlevel% neq 0 (
-        echo .expect > .gitignore
+        echo .expect >> .gitignore
     )
 )
 
