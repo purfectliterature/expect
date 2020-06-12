@@ -17,7 +17,7 @@ REM    limitations under the License.
 
 set HOST=localhost
 set PORT=8000
-set VERSION=0.1.22
+set VERSION=0.2.41
 
 echo Expect version %VERSION%
 
@@ -60,22 +60,14 @@ if /i "%1" neq "silent" (
 
 echo:
 echo [93m[1] Exporting your Expo app to [1mdist[0m[0m
-cd ..
 call expo export --public-url https://%HOST%:%PORT% --dev
-cd .expect
 
 echo:
-echo [93m[2] Preparing Experse server from [1mdist[0m[0m
-copy /Y experse\experse.py ..\dist\experse.py
-copy /Y experse\cert.pem ..\dist\cert.pem
-copy /Y experse\key_unencrypted.pem ..\dist\key_unencrypted.pem
+echo [93m[2] Starting Experse [1m(don't close the opened minimised window!)[0m[0m
+start /min cmd.exe /c "title Experse & py .expect\experse\experse.py %HOST% %PORT%"
 
 echo:
-echo [93m[3] Starting Experse [1m(don't close the opened minimised window!)[0m[0m
-start /min cmd.exe /c "title Experse & cd ..\dist\ & py ..\dist\experse.py %HOST% %PORT%"
-
-echo:
-echo [93m[4] Verifying connection to https://%HOST%:%PORT%[0m
+echo [93m[3] Verifying connection to https://%HOST%:%PORT%[0m
 curl --insecure https://%HOST%:%PORT% --silent -o nul
 
 if errorlevel 9009 call :OK
@@ -85,25 +77,21 @@ if errorlevel 7 echo [91m    Connection cannot be established.[0m & goto :EOF
 echo [92m    Connection is okay![0m
 
 echo:
-echo [93m[5] Starting Android build in WSL with turtle-cli[0m
+echo [93m[4] Starting Android build in WSL with turtle-cli[0m
 echo     This might take 15 minutes. Sit back and enjoy!
 wsl export NVM_DIR=^"$HOME/.nvm^";^
 [ -s ^"$NVM_DIR/nvm.sh^" ] ^&^& \. ^"$NVM_DIR/nvm.sh^";^
 [ -s ^"$NVM_DIR/bash_completion^" ] ^&^& \. ^"$NVM_DIR/bash_completion^";^
-source config.txt;^
+source .expect/config.txt;^
 export EXPO_ANDROID_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD;^
 export EXPO_ANDROID_KEY_PASSWORD=$KEY_PASSWORD;^
 export NODE_TLS_REJECT_UNAUTHORIZED=0;^
-cd ..;^
-turtle build:android --type apk --keystore-path ^".expect/$KEYSTORE_PATH^" --keystore-alias ^"$KEYSTORE_ALIAS^" --public-url https://%HOST%:%PORT%/android-index.json
+turtle build:android --type %BUILD% --keystore-path ^".expect/$KEYSTORE_PATH^" --keystore-alias ^"$KEYSTORE_ALIAS^" --public-url https://%HOST%:%PORT%/android-index.json
 
 echo:
-echo [93m[6] Cleaning up[0m
+echo [93m[5] Cleaning up[0m
 taskkill /f /fi "WINDOWTITLE eq Experse*"
 taskkill /f /fi "WINDOWTITLE eq Experse*"
-del ..\dist\experse.py
-del ..\dist\cert.pem
-del ..\dist\key_unencrypted.pem
 
 echo:
 echo [92mExpect processes has finished. Hope you get what you expected![0m

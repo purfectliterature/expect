@@ -23,9 +23,12 @@ ARGS = sys.argv
 
 HOST = ARGS[1]
 PORT = int(ARGS[2])
-VERSION = "0.1.19"
-CERT_FILE = "cert.pem"
-KEY_FILE = "key_unencrypted.pem"
+
+os.chdir("dist")
+
+VERSION = "0.2.41"
+CERT_FILE = "../.expect/experse/cert.pem"
+KEY_FILE = "../.expect/experse/key_unencrypted.pem"
 
 def main():
     print(f"Experse version {VERSION}")
