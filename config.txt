@@ -5,9 +5,10 @@
 # DO NOT remove the quotation marks. Replace the value
 # in them accordingly.
 
-# The keystore file name in .expect folder. Ignore the
-# PATH in KEYSTORE_PATH--it means nothing. You should
-# store the keystore.jks file in .expect folder.
+# The keystore.jks file path with respect to your Expo
+# project root directory. The following is an example
+# if your my-keystore.jks is stored in your root Expo
+# project directory.
 KEYSTORE_PATH="my-keystore.jks"
 
 # The alias to your keystore

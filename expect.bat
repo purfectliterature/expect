@@ -86,7 +86,7 @@ source .expect/config.txt;^
 export EXPO_ANDROID_KEYSTORE_PASSWORD=$KEYSTORE_PASSWORD;^
 export EXPO_ANDROID_KEY_PASSWORD=$KEY_PASSWORD;^
 export NODE_TLS_REJECT_UNAUTHORIZED=0;^
-turtle build:android --type %BUILD% --keystore-path ^".expect/$KEYSTORE_PATH^" --keystore-alias ^"$KEYSTORE_ALIAS^" --public-url https://%HOST%:%PORT%/android-index.json
+turtle build:android --type %BUILD% --keystore-path ^"$KEYSTORE_PATH^" --keystore-alias ^"$KEYSTORE_ALIAS^" --public-url https://%HOST%:%PORT%/android-index.json
 
 echo:
 echo [93m[5] Cleaning up[0m
