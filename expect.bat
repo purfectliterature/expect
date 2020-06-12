@@ -22,6 +22,17 @@ set VERSION=0.1.22
 echo Expect version %VERSION%
 
 if /i "%1" neq "silent" (
+    if /i "%1" equ "apk" (
+        set BUILD=apk
+    ) else (
+        if /i "%1" equ "app-bundle" (
+            set BUILD=app-bundle
+        ) else (
+            echo [91mUnrecognised input parameter(s^).[0m
+            goto :EOF
+        )
+    )
+
     echo:
     echo Before we begin, please ensure that:
     echo - A .jks keystore has been created and set the path, alias, and passwords in [1m[96mconfig.txt[0m[0m
@@ -32,8 +43,19 @@ if /i "%1" neq "silent" (
     echo   - For Android, you have set up turtle with Expo SDK with [96mturtle setup:android --sdk-version ^<your Expo SDK version^>[0m
     echo:
     echo Build will take approximately 15-20 minutes, so let's leave no room for errors.
-    choice /c yn /N /M "Ready to roll? (y/n) "
+    choice /c yn /N /M "Ready to build %1? (y/n) "
     if errorlevel 2 goto :EOF
+) else (
+    if /i "%2" equ "apk" (
+        set BUILD=apk
+    ) else (
+        if /i "%2" equ "app-bundle" (
+            set BUILD=app-bundle
+        ) else (
+            echo [91mUnrecognised input parameter(s^).[0m
+            goto :EOF
+        )
+    )
 )
 
 echo:
