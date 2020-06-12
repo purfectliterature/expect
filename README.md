@@ -47,7 +47,7 @@ In this folder, you will find a `config.txt` file with instructions commented in
 the credentials accordingly (your keystore file name, alias, keystore password, and key password).
 
 ### Set up a build script with Expect
-You can add Expect as a build script to your package manager. Add `.expect/expect` to `scripts` in `package.json` as follows:
+You can add Expect as a build script to your package manager. Add `cd .expect & expect` to `scripts` in `package.json` as follows:
 ```json
 ...
   "scripts": {
@@ -56,14 +56,14 @@ You can add Expect as a build script to your package manager. Add `.expect/expec
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build:android": ".expect/expect"
+    "build:android": "cd .expect & expect"
   },
 ...
 ```
 You can choose whatever script name you want. Then, you can simply build by invoking `npm build:android` or `yarn build:android`.
 
 **NOTE THAT** by default, Expect will print out a reminder of pre-requisites and prompt you if you are ready to build. If you have
-set everything up and want to build seamlessly, you can suppress this message by adding `.expect/expect silent` as the build script.
+set everything up and want to build seamlessly, you can suppress this message by adding `cd .expect & expect silent` as the build script.
 >Expect supports the `silent` argument to suppress pre-requisites messages.
 
 ## How does Expect work?
