@@ -10,15 +10,10 @@ echo [93m[2] Renaming [4mexpect[0m [93mto [4m.expect[0m[0m
 rename expect .expect
 
 echo:
-echo [93m[3] Checking if .expect has been ignored in .gitignore[0m
-if not exist ".gitignore" (
-    echo .expect >> .gitignore
-) else (
-    findstr /m ".expect" .gitignore
-    if %errorlevel% neq 0 (
-        echo .expect >> .gitignore
-    )
-)
+echo [93m[3] Cleaning up[0m
+del .expect\LICENSE
+del .expect\README.md
+del .expect\setup.bat
 
 echo:
 echo [92mYou are all done! Copy your [1mkeystore.jks[0m [92mto .expect and enter the credentials[0m
